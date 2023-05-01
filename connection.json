@@ -1,0 +1,48 @@
+{
+    "name": "firefly-network",
+    "version": "1.0.0",
+    "client": {
+            "tlsEnable": true,
+            "adminCredential": {
+                    "id": "exploreradmin",
+                    "password": "exploreradminpw"
+            },
+            "enableAuthentication": true,
+            "organization": "Org1MSP",
+            "connection": {
+                    "timeout": {
+                            "peer": {
+                                    "endorser": "300"
+                            },
+                            "orderer": "300"
+                    }
+            }
+    },
+    "channels": {
+            "firefly": {
+                    "peers": {
+                            "fabric_peer": {}
+                    }
+            }
+    },
+    "organizations": {
+            "Org1MSP": {
+                    "mspid": "Org1MSP",
+                    "adminPrivateKey": {
+                            "path": "/etc/firefly/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/tls/client.key"
+                    },
+                    "peers": ["fabric_peer"],
+                    "signedCert": {
+                            "path": "/etc/firefly/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/tls/client.crt"
+                    }
+            }
+    },
+    "peers": {
+            "fabric_peer": {
+                    "tlsCACerts": {
+                            "path": "/etc/firefly/organizations/peerOrganizations/org1.example.com/tlsca/tlsfabric_ca.org1.example.com-cert.pem"
+                    },
+                    "url": "grpcs://fabric_peer:7051"
+            }
+    }
+}

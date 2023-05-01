@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkparcel_app=self.webpackChunkparcel_app||[]).push([[7692],{77692:(s,n,e)=>{e.r(n),e.d(n,{executeGEOperation:()=>u});var p=e(7006);function u(a){return(0,p.g[a.operation])(...a.parameters)}}}]);

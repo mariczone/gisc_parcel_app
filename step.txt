@@ -1,0 +1,29 @@
+
+cd ~/.firefly/stacks/
+
+cd go
+cd bin
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
+
+peer lifecycle chaincode package -p . --label asset_transfer ./asset_transfer.zip
+
+in folder test-network use command below
+export PATH=${PWD}/../bin:$PATH
+
+touch core.yaml
+peer lifecycle chaincode package -p . --lang node --label asset_transfer ./asset_transfer.zip
+ff deploy fabric dev asset_transfer.zip firefly asset_transfer 1.0
+
+touch core.yaml
+peer lifecycle chaincode package -p . --lang node --label parcel_app ./parcel_app.zip
+ff deploy fabric dev parcel_app.zip firefly parcel_app 1.0
+
+
+
+touch core.yaml
+peer lifecycle chaincode package -p . --lang node --label test_app ./test_app.zip
+ff deploy fabric gisc test_app.zip firefly test_app 1.0
+
+http://10.254.30.106:5000/api/swagger.yaml
